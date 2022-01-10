@@ -50,3 +50,80 @@
       cy.url()
           .should('eq', 'https://next.privat24.ua/?lang=en')
    });
+
+   it("type", () => {
+      cy.visit('https://next.privat24.ua/mobile?lang=en')
+          .get('[data-qa-node="phone-number"]')
+          .type(11223344)
+   });
+
+   it("focus", () => {
+      cy.visit('https://next.privat24.ua/mobile?lang=en')
+          .get('[data-qa-node="amount"]')
+          .focus()
+   });
+
+   it("blur", () => {
+      cy.visit('https://next.privat24.ua/mobile?lang=en')
+          .get('[data-qa-node="amount"]')
+          .focus()
+          .blur()
+   });
+
+   it("clear", () => {
+      cy.visit('https://next.privat24.ua/mobile?lang=en')
+          .get('[data-qa-node="phone-number"]')
+          .type(11223344)
+          .clear()
+   });
+
+   it("submit", () => {
+      cy.visit('https://next.privat24.ua/mobile?lang=en')
+          .get('form[method="post"]')
+          .submit()
+   });
+
+   it("click", () => {
+      cy.visit('https://next.privat24.ua/mobile?lang=en')
+          .get('[data-qa-value="manual"]')
+          .click()
+   });
+
+   it("right click", () => {
+      cy.visit('https://example.cypress.io/commands/actions')
+          .contains('Right click to edit')
+          .rightclick()
+   });
+
+   it("double click", () => {
+      cy.visit('https://yari-demos.prod.mdn.mozit.cloud/en-US/docs/Web/API/Element/dblclick_event/_sample_.Examples.html')
+          .contains('My Card')
+          .dblclick()
+   });
+
+   it("check and scrollIntoView", () => {
+      cy.visit('https://en.privatbank.ua/')
+          .get('input#switch-input')
+          .scrollIntoView()
+          .check({force: true})
+          .wait(2000)
+          .uncheck({force: true})
+   });
+
+   it("scrollTo", () => {
+      cy.visit('https://en.privatbank.ua/')
+          .scrollTo(0, 500)
+   });
+
+   it("select", () => {
+      cy.visit('https://www.globalsqa.com/demo-site/select-dropdown-menu/')
+          .get('[rel-title="Select Country"] select')
+          .select("RUS")
+   });
+
+   it("trigger", () => {
+      cy.visit('https://next.privat24.ua/?lang=en')
+          .contains('Services')
+          .wait(2000)
+          .trigger('mouseover')
+   });
